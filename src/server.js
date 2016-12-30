@@ -7,8 +7,7 @@ var randomatic = require('randomatic')
 var User = require('./models/User')
 
 var app = express()
-app.use('/static', express.static(path.join(__dirname + '/static')))
-app.use('/vue', express.static(path.join('../node_modules/vue/dist')))
+app.use('/dist', express.static(path.join(__dirname + '/static/dist')))
 app.use(bodyParser.urlencoded({
   extended: true
 }))
@@ -31,7 +30,7 @@ app.post('/api/register', function (req, res) {
   })
   newUser.save(function (err) {
     if (err) res.json({ success: false, error: err })
-    res.json({success: true})
+    res.json({ success: true })
   })
 })
 
@@ -48,7 +47,7 @@ app.post('/api/logout', function (req, res) {
   var update = { 'accessKey': '' }
   User.findOneAndUpdate(searchQuery, update, function (err, doc) {
     if (err) res.json({ success: false, error: err })
-    res.json({success: true})
+    res.json({ success: true })
   })
 })
 
