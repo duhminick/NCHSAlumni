@@ -9,7 +9,7 @@ const routes = [
 ]
 const router = new VueRouter({ routes })
 
-let app = new Vue({
+new Vue({
   el: '#app',
   router
 })

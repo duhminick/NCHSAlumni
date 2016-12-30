@@ -59,10 +59,9 @@
 	_vue2.default.use(_vueRouter2.default);
 
 	var routes = [{ path: '/', component: { template: '<div>Index</div>' } }, { path: '/login', component: { template: '<div>Login</div>' } }];
-
 	var router = new _vueRouter2.default({ routes: routes });
 
-	var app = new _vue2.default({
+	new _vue2.default({
 	  el: '#app',
 	  router: router
 	});
