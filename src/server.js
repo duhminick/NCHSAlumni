@@ -8,9 +8,10 @@ var User = require('./models/User')
 
 var app = express()
 app.use('/dist', express.static(path.join(__dirname, '/static/dist')))
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }))
+app.use(bodyParser.json())
 
 mongoose.connect('mongodb://admin:admin@ds149258.mlab.com:49258/nchsalumni')
 
@@ -36,6 +37,8 @@ app.post('/api/register', function (req, res) {
 
 app.post('/api/login', function (req, res) {
   // Generates new access key for the user
+  // TODO: Make sure username and password are not blank
+  // TODO: Make username case insensitive
   var searchQuery = { username: req.body.username }
   User.findOne(searchQuery, function (err, user) {
     if (err) res.json({ success: false, error: err })
